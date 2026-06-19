@@ -224,173 +224,6 @@
             </div>
         </div>
 
-        <div id="gjTheoryModal" class="modal">
-            <div class="modal-content">
-                <button class="modal-close" id="closeGJTheoryModal">×</button>
-                <div class="modal-header">
-                    <h2 class="modal-title">📖 ¿Cómo funciona Gauss-Jordan?</h2>
-                    <p class="modal-subtitle">Guía completa con teoría, tips visuales y ejemplos de sintaxis</p>
-                </div>
-                <div class="gj-theory-modal-body">
-
-                    <div class="gj-theory-section">
-                        <h4>¿Qué es una matriz aumentada?</h4>
-                        <p>Un sistema de ecuaciones lineales se puede escribir como una <strong>matriz aumentada</strong>. 
-                        Los coeficientes de las variables van a la izquierda y los términos independientes a la derecha, 
-                        separados por una línea vertical.</p>
-                        <div class="gj-theory-example">
-                            <div class="gj-theory-eq">
-                                2x + 3y - z = 5<br>
-                                4x - y + 2z = 3<br>
-                                -2x + y + 3z = 4
-                            </div>
-                            <div class="gj-theory-arrow-eq">→</div>
-                            <div class="gj-theory-mat">
-                                [2   3  -1 | 5]<br>
-                                [4  -1   2 | 3]<br>
-                                [-2  1   3 | 4]
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="gj-theory-section">
-                        <h4>Tipos de sistemas</h4>
-                        <div class="gj-theory-types">
-                            <div class="gj-theory-type gj-type-scd">
-                                <div class="gj-type-badge">SCD</div>
-                                <strong>Compatible Determinado</strong>
-                                <span>Solución única. Una variable = un valor.</span>
-                            </div>
-                            <div class="gj-theory-type gj-type-sci">
-                                <div class="gj-type-badge">SCI</div>
-                                <strong>Compatible Indeterminado</strong>
-                                <span>Infinitas soluciones. Hay variables libres.</span>
-                            </div>
-                            <div class="gj-theory-type gj-type-si">
-                                <div class="gj-type-badge">SI</div>
-                                <strong>Incompatible</strong>
-                                <span>Sin solución. Una ecuación es contradictoria.</span>
-                            </div>
-                        </div>
-                        <p class="gj-theory-note">Los ejercicios acá generados son siempre <strong>SCD</strong> para practicar.</p>
-                    </div>
-
-                    <div class="gj-theory-section">
-                        <h4>💡 Tips prácticos — mirá la matriz</h4>
-                        <table class="gj-theory-ops">
-                            <tr>
-                                <td class="gj-ops-icon">🔍</td>
-                                <td><strong>Filas proporcionales → SCI o SI</strong></td>
-                                <td class="gj-ops-desc">Si una fila es múltiplo exacto de otra, algo raro pasa. Fijate el RHS: si también es múltiplo → <strong>SCI</strong> (infinitas soluciones). Si no → <strong>SI</strong> (incompatible).</td>
-                            </tr>
-                            <tr>
-                                <td class="gj-ops-icon">0️⃣</td>
-                                <td><strong>Fila de ceros → determinante cero</strong></td>
-                                <td class="gj-ops-desc">Si al triangular te queda una fila [0 0 ... | c], detectaste <strong>SI</strong> si c ≠ 0, o <strong>SCI</strong> si c = 0. ¡Bien ahí!</td>
-                            </tr>
-                            <tr>
-                                <td class="gj-ops-icon">📏</td>
-                                <td><strong>Contá pivotes</strong></td>
-                                <td class="gj-ops-desc"><strong>N pivotes = N variables → SCD.</strong> Faltan pivotes → hay variables libres → SCI. Siempre verificarlo al final.</td>
-                            </tr>
-                            <tr>
-                                <td class="gj-ops-icon">⚡</td>
-                                <td><strong>Si el pivote es 1, mejor</strong></td>
-                                <td class="gj-ops-desc">Antes de eliminar, si el pivote es 1 no vas a tener fracciones. Si no es 1, podés dividir la fila primero o usar fracciones.</td>
-                            </tr>
-                            <tr>
-                                <td class="gj-ops-icon">🔄</td>
-                                <td><strong>No hay pivote → intercambiá filas</strong></td>
-                                <td class="gj-ops-desc">Si en la diagonal tenés un cero, fijate si intercambiando filas aparece un número distinto de cero. Si no hay ninguna fila con pivote → esa columna es variable libre.</td>
-                            </tr>
-                            <tr>
-                                <td class="gj-ops-icon">🧮</td>
-                                <td><strong>Modo guiado activado</strong></td>
-                                <td class="gj-ops-desc">Te va marcando qué cero crear y con qué operación. Si te perdés, apretá 💡 Pista y se autocompleta la operación correcta.</td>
-                            </tr>
-                        </table>
-                    </div>
-
-                    <div class="gj-theory-section">
-                        <h4>Operaciones permitidas (no cambian la solución)</h4>
-                        <table class="gj-theory-ops">
-                            <tr>
-                                <td class="gj-ops-icon">🔄</td>
-                                <td><strong>Intercambiar filas</strong></td>
-                                <td><code>R2 ↔ R3</code></td>
-                                <td class="gj-ops-desc">Cambiás el orden de las ecuaciones.</td>
-                            </tr>
-                            <tr>
-                                <td class="gj-ops-icon">✖️</td>
-                                <td><strong>Multiplicar una fila por escalar ≠ 0</strong></td>
-                                <td><code>R1 = 2*R1</code></td>
-                                <td class="gj-ops-desc">Escalás toda una ecuación.</td>
-                            </tr>
-                            <tr>
-                                <td class="gj-ops-icon">➕</td>
-                                <td><strong>Sumar múltiplo de otra fila</strong></td>
-                                <td><code>R2 = R2 - 2*R1</code></td>
-                                <td class="gj-ops-desc">Eliminás variables combinando ecuaciones.</td>
-                            </tr>
-                            <tr>
-                                <td class="gj-ops-icon">➗</td>
-                                <td><strong>Dividir una fila por escalar ≠ 0</strong></td>
-                                <td><code>R1 = R1 / 2</code></td>
-                                <td class="gj-ops-desc">Normalizás para que el pivote sea 1.</td>
-                            </tr>
-                        </table>
-                    </div>
-
-                    <div class="gj-theory-section">
-                        <h4>⚠️ Operaciones NO permitidas</h4>
-                        <table class="gj-theory-ops gj-theory-forbidden">
-                            <tr>
-                                <td class="gj-ops-icon">🚫</td>
-                                <td><strong>Multiplicar o dividir por cero</strong></td>
-                                <td class="gj-ops-desc">Pierde información o divide por cero.</td>
-                            </tr>
-                            <tr>
-                                <td class="gj-ops-icon">🚫</td>
-                                <td><strong>Multiplicar solo un término</strong></td>
-                                <td class="gj-ops-desc">Toda la fila se multiplica, no un elemento.</td>
-                            </tr>
-                            <tr>
-                                <td class="gj-ops-icon">🚫</td>
-                                <td><strong>Sumar una constante a una fila</strong></td>
-                                <td class="gj-ops-desc">Solo se pueden sumar múltiplos de <em>otras filas</em>.</td>
-                            </tr>
-                            <tr>
-                                <td class="gj-ops-icon">🚫</td>
-                                <td><strong>Modificar la columna de resultados sola</strong></td>
-                                <td class="gj-ops-desc">La operación afecta a toda la fila, RHS incluido.</td>
-                            </tr>
-                        </table>
-                    </div>
-
-                    <div class="gj-theory-section">
-                        <h4>El método paso a paso</h4>
-                        <ol class="gj-theory-steps">
-                            <li><strong>Eliminación hacia adelante:</strong> creamos ceros <em>debajo</em> de cada pivote (columna por columna, de izquierda a derecha).</li>
-                            <li><strong>Eliminación hacia atrás:</strong> creamos ceros <em>arriba</em> de cada pivote (de derecha a izquierda).</li>
-                            <li><strong>Normalización:</strong> dividimos cada fila por su pivote para que quede 1.</li>
-                            <li>Al final, la matriz queda en su <strong>forma reducida</strong> y la solución se lee directamente.</li>
-                        </ol>
-                    </div>
-
-                    <div class="gj-theory-section">
-                        <h4>Leyenda de colores</h4>
-                        <div class="gj-theory-legend">
-                            <span class="gj-legend-item"><span class="gj-legend-swatch" style="background:#bbdefb;border:2px solid #1565c0"></span> Pivote (elemento diagonal)</span>
-                            <span class="gj-legend-item"><span class="gj-legend-swatch" style="background:transparent;color:#2e7d32;font-weight:700">0</span> Cero creado en esa posición</span>
-                            <span class="gj-legend-item"><span class="gj-legend-swatch" style="background:#f3e5f5"></span> Fila modificada en el último paso</span>
-                            <span class="gj-legend-item"><span class="gj-legend-swatch" style="background:transparent;color:#00695c;font-weight:600">#</span> Término independiente</span>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        </div>
-
         <!-- ═══ PRACTICE VIEW ═══ -->
         <div id="practiceView" class="practice-view">
             <div class="practice-header">
@@ -417,7 +250,175 @@
             <button class="back-classic-btn" id="backClassicBtn">← Volver al modo Classic</button>
         </div>
     </div>
-    
+
+    <!-- ═══ MODAL DE TEORÍA GAUSS-JORDAN (fuera de mainAppView) ═══ -->
+    <div id="gjTheoryModal" class="modal">
+        <div class="modal-content">
+            <button class="modal-close" id="closeGJTheoryModal">×</button>
+            <div class="modal-header">
+                <h2 class="modal-title">📖 ¿Cómo funciona Gauss-Jordan?</h2>
+                <p class="modal-subtitle">Guía completa con teoría, tips visuales y ejemplos de sintaxis</p>
+            </div>
+            <div class="gj-theory-modal-body">
+
+                <div class="gj-theory-section">
+                    <h4>¿Qué es una matriz aumentada?</h4>
+                    <p>Un sistema de ecuaciones lineales se puede escribir como una <strong>matriz aumentada</strong>. 
+                    Los coeficientes de las variables van a la izquierda y los términos independientes a la derecha, 
+                    separados por una línea vertical.</p>
+                    <div class="gj-theory-example">
+                        <div class="gj-theory-eq">
+                            2x + 3y - z = 5<br>
+                            4x - y + 2z = 3<br>
+                            -2x + y + 3z = 4
+                        </div>
+                        <div class="gj-theory-arrow-eq">→</div>
+                        <div class="gj-theory-mat">
+                            [2   3  -1 | 5]<br>
+                            [4  -1   2 | 3]<br>
+                            [-2  1   3 | 4]
+                        </div>
+                    </div>
+                </div>
+
+                <div class="gj-theory-section">
+                    <h4>Tipos de sistemas</h4>
+                    <div class="gj-theory-types">
+                        <div class="gj-theory-type gj-type-scd">
+                            <div class="gj-type-badge">SCD</div>
+                            <strong>Compatible Determinado</strong>
+                            <span>Solución única. Una variable = un valor.</span>
+                        </div>
+                        <div class="gj-theory-type gj-type-sci">
+                            <div class="gj-type-badge">SCI</div>
+                            <strong>Compatible Indeterminado</strong>
+                            <span>Infinitas soluciones. Hay variables libres.</span>
+                        </div>
+                        <div class="gj-theory-type gj-type-si">
+                            <div class="gj-type-badge">SI</div>
+                            <strong>Incompatible</strong>
+                            <span>Sin solución. Una ecuación es contradictoria.</span>
+                        </div>
+                    </div>
+                    <p class="gj-theory-note">Los ejercicios acá generados son siempre <strong>SCD</strong> para practicar.</p>
+                </div>
+
+                <div class="gj-theory-section">
+                    <h4>💡 Tips prácticos — mirá la matriz</h4>
+                    <table class="gj-theory-ops">
+                        <tr>
+                            <td class="gj-ops-icon">🔍</td>
+                            <td><strong>Filas proporcionales → SCI o SI</strong></td>
+                            <td class="gj-ops-desc">Si una fila es múltiplo exacto de otra, algo raro pasa. Fijate el RHS: si también es múltiplo → <strong>SCI</strong> (infinitas soluciones). Si no → <strong>SI</strong> (incompatible).</td>
+                        </tr>
+                        <tr>
+                            <td class="gj-ops-icon">0️⃣</td>
+                            <td><strong>Fila de ceros → determinante cero</strong></td>
+                            <td class="gj-ops-desc">Si al triangular te queda una fila [0 0 ... | c], detectaste <strong>SI</strong> si c ≠ 0, o <strong>SCI</strong> si c = 0. ¡Bien ahí!</td>
+                        </tr>
+                        <tr>
+                            <td class="gj-ops-icon">📏</td>
+                            <td><strong>Contá pivotes</strong></td>
+                            <td class="gj-ops-desc"><strong>N pivotes = N variables → SCD.</strong> Faltan pivotes → hay variables libres → SCI. Siempre verificarlo al final.</td>
+                        </tr>
+                        <tr>
+                            <td class="gj-ops-icon">⚡</td>
+                            <td><strong>Si el pivote es 1, mejor</strong></td>
+                            <td class="gj-ops-desc">Antes de eliminar, si el pivote es 1 no vas a tener fracciones. Si no es 1, podés dividir la fila primero o usar fracciones.</td>
+                        </tr>
+                        <tr>
+                            <td class="gj-ops-icon">🔄</td>
+                            <td><strong>No hay pivote → intercambiá filas</strong></td>
+                            <td class="gj-ops-desc">Si en la diagonal tenés un cero, fijate si intercambiando filas aparece un número distinto de cero. Si no hay ninguna fila con pivote → esa columna es variable libre.</td>
+                        </tr>
+                        <tr>
+                            <td class="gj-ops-icon">🧮</td>
+                            <td><strong>Modo guiado activado</strong></td>
+                            <td class="gj-ops-desc">Te va marcando qué cero crear y con qué operación. Si te perdés, apretá 💡 Pista y se autocompleta la operación correcta.</td>
+                        </tr>
+                    </table>
+                </div>
+
+                <div class="gj-theory-section">
+                    <h4>Operaciones permitidas (no cambian la solución)</h4>
+                    <table class="gj-theory-ops">
+                        <tr>
+                            <td class="gj-ops-icon">🔄</td>
+                            <td><strong>Intercambiar filas</strong></td>
+                            <td><code>R2 ↔ R3</code></td>
+                            <td class="gj-ops-desc">Cambiás el orden de las ecuaciones.</td>
+                        </tr>
+                        <tr>
+                            <td class="gj-ops-icon">✖️</td>
+                            <td><strong>Multiplicar una fila por escalar ≠ 0</strong></td>
+                            <td><code>R1 = 2*R1</code></td>
+                            <td class="gj-ops-desc">Escalás toda una ecuación.</td>
+                        </tr>
+                        <tr>
+                            <td class="gj-ops-icon">➕</td>
+                            <td><strong>Sumar múltiplo de otra fila</strong></td>
+                            <td><code>R2 = R2 - 2*R1</code></td>
+                            <td class="gj-ops-desc">Eliminás variables combinando ecuaciones.</td>
+                        </tr>
+                        <tr>
+                            <td class="gj-ops-icon">➗</td>
+                            <td><strong>Dividir una fila por escalar ≠ 0</strong></td>
+                            <td><code>R1 = R1 / 2</code></td>
+                            <td class="gj-ops-desc">Normalizás para que el pivote sea 1.</td>
+                        </tr>
+                    </table>
+                </div>
+
+                <div class="gj-theory-section">
+                    <h4>⚠️ Operaciones NO permitidas</h4>
+                    <table class="gj-theory-ops gj-theory-forbidden">
+                        <tr>
+                            <td class="gj-ops-icon">🚫</td>
+                            <td><strong>Multiplicar o dividir por cero</strong></td>
+                            <td class="gj-ops-desc">Pierde información o divide por cero.</td>
+                        </tr>
+                        <tr>
+                            <td class="gj-ops-icon">🚫</td>
+                            <td><strong>Multiplicar solo un término</strong></td>
+                            <td class="gj-ops-desc">Toda la fila se multiplica, no un elemento.</td>
+                        </tr>
+                        <tr>
+                            <td class="gj-ops-icon">🚫</td>
+                            <td><strong>Sumar una constante a una fila</strong></td>
+                            <td class="gj-ops-desc">Solo se pueden sumar múltiplos de <em>otras filas</em>.</td>
+                        </tr>
+                        <tr>
+                            <td class="gj-ops-icon">🚫</td>
+                            <td><strong>Modificar la columna de resultados sola</strong></td>
+                            <td class="gj-ops-desc">La operación afecta a toda la fila, RHS incluido.</td>
+                        </tr>
+                    </table>
+                </div>
+
+                <div class="gj-theory-section">
+                    <h4>El método paso a paso</h4>
+                    <ol class="gj-theory-steps">
+                        <li><strong>Eliminación hacia adelante:</strong> creamos ceros <em>debajo</em> de cada pivote (columna por columna, de izquierda a derecha).</li>
+                        <li><strong>Eliminación hacia atrás:</strong> creamos ceros <em>arriba</em> de cada pivote (de derecha a izquierda).</li>
+                        <li><strong>Normalización:</strong> dividimos cada fila por su pivote para que quede 1.</li>
+                        <li>Al final, la matriz queda en su <strong>forma reducida</strong> y la solución se lee directamente.</li>
+                    </ol>
+                </div>
+
+                <div class="gj-theory-section">
+                    <h4>Leyenda de colores</h4>
+                    <div class="gj-theory-legend">
+                        <span class="gj-legend-item"><span class="gj-legend-swatch" style="background:#bbdefb;border:2px solid #1565c0"></span> Pivote (elemento diagonal)</span>
+                        <span class="gj-legend-item"><span class="gj-legend-swatch" style="background:transparent;color:#2e7d32;font-weight:700">0</span> Cero creado en esa posición</span>
+                        <span class="gj-legend-item"><span class="gj-legend-swatch" style="background:#f3e5f5"></span> Fila modificada en el último paso</span>
+                        <span class="gj-legend-item"><span class="gj-legend-swatch" style="background:transparent;color:#00695c;font-weight:600">#</span> Término independiente</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
     <!-- ═══ VIEW DE HERRAMIENTAS ═══ -->
     <div id="gaussJordanView" style="display: none;"></div>
     
