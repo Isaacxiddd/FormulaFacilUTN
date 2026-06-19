@@ -1,6 +1,7 @@
 import { GaussJordanEngine } from './engine.js';
 import { parseOperation } from './parser.js';
 import { generateExerciseBySize } from './exercises.js';
+import { openGJTheoryModal } from '../../core/ui.js';
 
 let engine = null;
 let guidedMode = true;
@@ -14,7 +15,10 @@ export function initGaussJordan(containerId) {
         <div class="gj-header">
             <button class="gj-back-btn" id="gjBackBtn">← Volver</button>
             <h2>⊞ Eliminación Gauss-Jordan</h2>
-            <button class="gj-btn gj-theory-btn" id="gjTheoryBtn">📖 Teoría</button>
+        </div>
+
+        <div class="gj-section-title" id="gjTheoryBtn">
+            📖 Guía Completa de Gauss-Jordan
         </div>
 
         <div class="gj-toolbar">
@@ -85,16 +89,7 @@ export function initGaussJordan(containerId) {
         if (st) st.style.display = 'none';
     });
 
-    document.getElementById('gjTheoryBtn').addEventListener('click', () => {
-        document.getElementById('gjTheoryModal').classList.add('active');
-    });
-    document.getElementById('closeGJTheoryModal').addEventListener('click', closeTheoryModal);
-    document.getElementById('gjTheoryModal').addEventListener('click', (e) => {
-        if (e.target === document.getElementById('gjTheoryModal')) closeTheoryModal();
-    });
-    function closeTheoryModal() {
-        document.getElementById('gjTheoryModal').classList.remove('active');
-    }
+    document.getElementById('gjTheoryBtn').addEventListener('click', openGJTheoryModal);
 
     document.getElementById('gjGuidedToggle').addEventListener('change', (e) => {
         guidedMode = e.target.checked;

@@ -268,6 +268,17 @@ export function initializeRouter() {
         }
     });
     
+    // Cerrar modal de teoría de Gauss-Jordan
+    document.getElementById('closeGJTheoryModal').addEventListener('click', () => {
+        import('./ui.js').then(ui => ui.closeGJTheoryModal());
+    });
+    
+    document.getElementById('gjTheoryModal').addEventListener('click', (e) => {
+        if (e.target.id === 'gjTheoryModal') {
+            import('./ui.js').then(ui => ui.closeGJTheoryModal());
+        }
+    });
+    
     // Botón de nuevo juego
     document.getElementById('newGameBtn').addEventListener('click', () => {
         if (gameState.currentMode === 'classic') {

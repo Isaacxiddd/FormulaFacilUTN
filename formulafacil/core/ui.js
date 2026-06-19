@@ -243,6 +243,16 @@ export function closeFormulasModal() {
     modal.classList.remove('active');
 }
 
+export function openGJTheoryModal() {
+    const modal = document.getElementById('gjTheoryModal');
+    modal.classList.add('active');
+}
+
+export function closeGJTheoryModal() {
+    const modal = document.getElementById('gjTheoryModal');
+    modal.classList.remove('active');
+}
+
 function renderFiguresGallery(scrollToIndex = null) {
     const gallery = document.getElementById('figuresGallery');
     gallery.innerHTML = '';

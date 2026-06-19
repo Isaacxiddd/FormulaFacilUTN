@@ -2965,34 +2965,55 @@ body.dark-mode .gj-back-btn:hover {
     background: #3a3a4e;
 }
 
-.gj-theory-btn {
-    margin-left: auto;
-    background: #f3e5f5;
-    border: 2px solid #e1bee7;
-    padding: 6px 14px;
-    border-radius: 20px;
+.gj-section-title {
+    display: block;
+    font-size: 1.15em;
+    font-weight: bold;
+    color: white;
+    text-align: center;
+    margin-bottom: 16px;
+    padding: 12px;
+    background: linear-gradient(135deg, var(--utn-purple-dark) 0%, var(--utn-purple-main) 100%);
+    border-radius: 10px;
     cursor: pointer;
-    font-size: 0.85em;
-    color: #6a1b9a;
-    transition: all 0.2s;
-    white-space: nowrap;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
 }
 
-.gj-theory-btn:hover {
-    background: #e1bee7;
-    border-color: #ce93d8;
-    transform: scale(1.05);
+.gj-section-title::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.2);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s ease, height 0.6s ease;
+    pointer-events: none;
 }
 
-body.dark-mode .gj-theory-btn {
-    background: #2a1a4e;
-    border-color: #4a148c;
-    color: #ce93d8;
+.gj-section-title:hover::before {
+    width: 300px;
+    height: 300px;
 }
 
-body.dark-mode .gj-theory-btn:hover {
-    background: #3a2a5e;
-    border-color: #6a1b9a;
+.gj-section-title:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(106, 27, 154, 0.4);
+    background: linear-gradient(135deg, var(--utn-purple-main) 0%, var(--utn-purple-light) 100%);
+}
+
+.gj-section-title::after {
+    content: '📖';
+    margin-left: 10px;
+    font-size: 0.9em;
+}
+
+body.dark-mode .gj-section-title {
+    color: #ffffff !important;
 }
 
 .gj-theory-modal-body {
@@ -3782,9 +3803,10 @@ body.dark-mode .gj-sol-item {
         flex-direction: column;
     }
 
-    .gj-theory-btn {
-        font-size: 0.75em;
-        padding: 4px 10px;
+    .gj-section-title {
+        font-size: 0.95em;
+        padding: 10px;
+        margin-bottom: 12px;
     }
 
     .gj-theory-type {
