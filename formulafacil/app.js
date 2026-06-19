@@ -5,7 +5,7 @@
 
 import { initAudio } from './core/audio.js';
 import { initializeRouter } from './core/router.js';
-import { newGame } from './core/game.js';
+import { verifyMathJaxLoaded, setupMathJaxObserver, showMathJaxLoading } from './core/mathjax-check.js';
 
 // ══════════════════════════════════════════════════════════════
 // INICIALIZACIÓN PRINCIPAL
@@ -14,6 +14,11 @@ import { newGame } from './core/game.js';
 async function initializeApp() {
     try {
         console.log('🚀 Iniciando aplicación...');
+        
+        // Verificar MathJax
+        verifyMathJaxLoaded();
+        setupMathJaxObserver();
+        showMathJaxLoading();
         
         // Inicializar audio
         initAudio();

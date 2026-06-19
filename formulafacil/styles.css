@@ -755,7 +755,77 @@ body.dark-mode .formula-example h4 {
 
 body.dark-mode .example-step {
     color: #ffffff !important;
-} 
+}
+
+/* ══════════════════════════════════════════════════════════════ DARK MODE - MODALES Y GALERÍAS ══════════════════════════════════════════════════════════════ */
+
+body.dark-mode .figure-item {
+    background: rgba(74, 20, 140, 0.85) !important;
+    border-color: rgba(142, 36, 170, 0.5) !important;
+    color: #ffffff !important;
+}
+
+body.dark-mode .figure-item-name {
+    color: #ffffff !important;
+}
+
+body.dark-mode .figure-item p {
+    color: #dddddd !important;
+}
+
+body.dark-mode .formula-detail {
+    background: rgba(74, 20, 140, 0.85) !important;
+    border-color: rgba(142, 36, 170, 0.5) !important;
+    color: #ffffff !important;
+}
+
+body.dark-mode .formula-detail-title {
+    color: #ffffff !important;
+}
+
+body.dark-mode .formula-explanation {
+    color: #dddddd !important;
+}
+
+body.dark-mode .formula-math,
+body.dark-mode .formula-expression {
+    background: rgba(45, 27, 105, 0.9) !important;
+    border-color: rgba(142, 36, 170, 0.5) !important;
+    color: #ffffff !important;
+}
+
+body.dark-mode .formula-variables {
+    background: rgba(45, 27, 105, 0.7) !important;
+    color: #ffffff !important;
+}
+
+body.dark-mode .formula-variables h4 {
+    color: #ffffff !important;
+}
+
+body.dark-mode .formula-variables ul li {
+    color: #dddddd !important;
+}
+
+body.dark-mode .formula-figure-preview-svg {
+    background: rgba(45, 27, 105, 0.7) !important;
+}
+
+body.dark-mode .formula-figure-preview-icon {
+    color: #ffffff !important;
+}
+
+body.dark-mode .formula-figure-preview-name {
+    color: #ffffff !important;
+}
+
+body.dark-mode .formula-svg-example {
+    background: rgba(45, 27, 105, 0.7) !important;
+}
+
+body.dark-mode .formula-figure {
+    background: rgba(45, 27, 105, 0.6) !important;
+}
 
 .fmt-logo:hover { 
     opacity: 1; 

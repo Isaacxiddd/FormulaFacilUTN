@@ -9,12 +9,43 @@
             tex: {
                 inlineMath: [['$', '$'], ['\\(', '\\)']],
                 displayMath: [['$$', '$$'], ['\\[', '\\]']]
+            },
+            options: {
+                enableMenu: false,
+                renderActions: {
+                    addMenu: []
+                }
+            },
+            startup: {
+                ready() {
+                    MathJax.startup.defaultReady();
+                    MathJax.startup.promise.then(() => {
+                        document.dispatchEvent(new Event('mathjax-ready'));
+                    });
+                }
+            },
+            loader: {
+                load: ['[tex]/ams']
             }
         };
     </script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="styles.css">
     <link rel="icon" type="image/x-icon" href="logo-utn.png">
+    <style>
+        #mathjax-loading {
+            position: fixed; bottom: 20px; left: 20px; z-index: 99999;
+            background: rgba(0,0,0,0.75); color: #fff; padding: 8px 14px;
+            border-radius: 8px; font-size: 0.8em; display: none;
+            pointer-events: none; backdrop-filter: blur(4px);
+        }
+        #mathjax-loading.show { display: flex; align-items: center; gap: 8px; }
+        #mathjax-loading .spinner {
+            width: 14px; height: 14px; border: 2px solid rgba(255,255,255,0.3);
+            border-top-color: #fff; border-radius: 50%; animation: mjSpin 0.6s linear infinite;
+        }
+        @keyframes mjSpin { to { transform: rotate(360deg); } }
+    </style>
 </head>
 <body>
     <div class="container">
@@ -153,7 +184,7 @@
                 🎉 ¡Felicitaciones! ¡Completaste todas las parejas! 🎉
             </div>
             <div class="buttons">
-                <button id="newGameBtn">🔄 Nuevo Juego</button>
+                <button id="newGameBtn">Nuevo Juego</button>
             </div>
         </div>
 
@@ -205,34 +236,12 @@
 
             <button class="back-classic-btn" id="backClassicBtn">← Volver al modo Classic</button>
         </div>
-
-        <!-- Modals -->
-        <div id="figuresModal" class="modal">
-            <div class="modal-content">
-                <button class="modal-close" id="closeFiguresModal">×</button>
-                <div class="modal-header">
-                    <h2 class="modal-title">📐 Galería Completa</h2>
-                    <p class="modal-subtitle">Haz clic en cualquier figura para ver su fórmula detallada</p>
-                </div>
-                <div id="figuresGallery" class="figures-gallery"></div>
-            </div>
-        </div>
-
-        <div id="formulasModal" class="modal">
-            <div class="modal-content">
-                <button class="modal-close" id="closeFormulasModal">×</button>
-                <div class="modal-header">
-                    <h2 class="modal-title">📝 Guía Completa de Fórmulas</h2>
-                    <p class="modal-subtitle">Fórmulas detalladas con explicaciones, ejemplos y figuras</p>
-                </div>
-                <div id="formulasList" class="formulas-list"></div>
-            </div>
-        </div>
     </div>
     
     <!-- ES Module Principal -->
     <script type="module" src="app.js"></script>
     <!-- Modo Oscuro -->
     <script src="core/darkmode.js"></script>
+    <div id="mathjax-loading"><div class="spinner"></div><span>Renderizando fórmulas...</span></div>
 </body>
 </html>

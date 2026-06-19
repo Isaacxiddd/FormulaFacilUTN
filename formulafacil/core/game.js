@@ -7,6 +7,7 @@ import { getThemeConfig } from './themes.js';
 import { playAudioWithPitch, playAudio, audioCorrecto, audioIncorrecto } from './audio.js';
 import { showTip, animateFire, resetFireAnimation, updateScoreboard, hideTip } from './ui.js';
 import { shuffle, delay } from './utils.js';
+import { monitorMathJaxRendering, verifyMathRendering } from './mathjax-check.js';
 
 // ══════════════════════════════════════════════════════════════
 // CREACIÓN DE CARTAS
@@ -207,7 +208,13 @@ export function updateCards() {
         formulasContainer.appendChild(createFormulaCard(gameState.currentDataSource[formulaIndex], formulaIndex, i));
     }
     
-    MathJax.typesetPromise();
+    if (typeof MathJax !== 'undefined') {
+        MathJax.typesetPromise().then(() => {
+            if (!verifyMathRendering(figuresContainer) || !verifyMathRendering(formulasContainer)) {
+                monitorMathJaxRendering(formulasContainer, 3);
+            }
+        }).catch(() => {});
+    }
 }
 
 export function newGame() {
@@ -480,7 +487,11 @@ export async function renderPracticeExercise(exercise) {
     
     // Renderizar MathJax
     if (typeof MathJax !== 'undefined') {
-        MathJax.typesetPromise();
+        MathJax.typesetPromise().then(() => {
+            if (!verifyMathRendering(slot)) {
+                monitorMathJaxRendering(slot, 3);
+            }
+        }).catch(() => {});
     }
     
     console.log('🎯 renderPracticeExercise completado');

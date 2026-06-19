@@ -1,0 +1,13 @@
+{
+  "name": "formulafacil-utn",
+  "private": true,
+  "version": "4.0.0",
+  "description": "Memoriza Fórmulas Matemáticas - UTN FRBA",
+  "scripts": {
+    "dev": "npx serve formulafacil -l 3000",
+    "start": "npx serve formulafacil -l 3000",
+    "build": "echo 'Static site - no build required'"
+  },
+  "keywords": ["matematicas", "utn", "formulas", "educacion"],
+  "license": "MIT"
+}

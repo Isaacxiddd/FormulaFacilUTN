@@ -6,6 +6,7 @@ import { gameState } from './state.js';
 import { getThemeConfig } from './themes.js';
 import { playAudioWithPitch, playAudio } from './audio.js';
 import { delay } from './utils.js';
+import { monitorMathJaxRendering, verifyMathRendering } from './mathjax-check.js';
 
 // ══════════════════════════════════════════════════════════════
 // SISTEMA DE TIPS
@@ -413,7 +414,13 @@ function renderFormulasList(scrollToIndex = null) {
         }
     });
     
-    MathJax.typesetPromise();
+    if (typeof MathJax !== 'undefined') {
+        MathJax.typesetPromise().then(() => {
+            if (!verifyMathRendering(list)) {
+                monitorMathJaxRendering(list, 3);
+            }
+        }).catch(() => {});
+    }
     
     if (scrollToIndex !== null) {
         setTimeout(() => {
