@@ -17,6 +17,8 @@ export const gameState = {
     currentTheme: null,
     currentDataSource: null,
     currentDifficulty: 'medium',
+    currentParcial: 1,
+    currentTool: null,
     
     // UI
     tipTimeout: null,
@@ -79,6 +81,10 @@ export const mutations = {
     
     setCurrentFormulas(formulas) {
         gameState.currentFormulas = formulas;
+    },
+
+    setParcial(parcial) {
+        gameState.currentParcial = parcial;
     }
 };
 

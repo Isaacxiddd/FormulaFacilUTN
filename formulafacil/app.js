@@ -81,8 +81,7 @@ document.addEventListener('DOMContentLoaded', () => {
             document.querySelectorAll('.parcial-btn').forEach(b => b.classList.remove('active'));
             btn.classList.add('active');
 
-            // Obtener estado actual de forma síncrona
-            const { gameState } = await import('./core/state.js');
+            const { gameState, mutations } = await import('./core/state.js');
             const currentTheme = gameState.currentTheme;
             const currentMode = gameState.currentMode;
             
@@ -93,36 +92,47 @@ document.addEventListener('DOMContentLoaded', () => {
             console.log('📋 Tema actual:', currentTheme);
             console.log('📋 Modo actual:', currentMode);
 
+            const toolsSelector = document.getElementById('themeSelectorTools');
+
+            if (parcial === 'tools') {
+                console.log('🔄 Mostrando Herramientas');
+                selector1.style.display = 'none';
+                selector2.style.display = 'none';
+                toolsSelector.style.display = '';
+
+                const { openGaussJordan } = await import('./core/gauss-jordan.js');
+                openGaussJordan();
+                mutations.setParcial('tools');
+                return;
+            }
+
+            // Ocultar herramientas si estaban visibles
+            if (toolsSelector) toolsSelector.style.display = 'none';
+
+            const { closeGaussJordan } = await import('./core/gauss-jordan.js');
+
             if (parcial === '1') {
                 console.log('🔄 Mostrando Parcial 1, ocultando Parcial 2');
+                closeGaussJordan();
                 selector1.style.display = '';
                 selector2.style.display = 'none';
                 
-                // Siempre ir a Geometría cuando volvemos al Parcial 1
                 console.log('🔄 Volviendo al Parcial 1 - Forzando Geometría');
-                // Quitar active de todos los botones de tema
                 document.querySelectorAll('.theme-btn').forEach(b => b.classList.remove('active'));
                 const geometryBtn = document.getElementById('geometryBtn');
                 if (geometryBtn) geometryBtn.classList.add('active');
-                // Usar onThemeChange para cargar todo correctamente
                 const { onThemeChange } = await import('./core/router.js');
                 await onThemeChange('geometry');
             } else {
                 console.log('🔄 Mostrando Parcial 2, ocultando Parcial 1');
+                closeGaussJordan();
                 selector1.style.display = 'none';
                 selector2.style.display = '';
-                console.log('🔄 themeSelector2 display:', selector2.style.display);
                 
-                // Para Parcial 2, simplemente ir al primer tema sin mapeo
                 console.log('🎯 Ir al primer tema del Parcial 2');
-                console.log('🔍 Buscando botones en themeSelector2:', selector2);
-                // Quitar active de todos los botones de tema
                 document.querySelectorAll('.theme-btn').forEach(b => b.classList.remove('active'));
                 const firstBtn = selector2.querySelector('.theme-btn');
-                console.log('🔍 Primer botón encontrado:', firstBtn);
-                console.log('🔍 Botón trigonometriaBtn:', document.getElementById('trigonometriaBtn'));
                 if (firstBtn) firstBtn.classList.add('active');
-                // Usar onThemeChange para cargar todo correctamente
                 const { onThemeChange } = await import('./core/router.js');
                 await onThemeChange('trigonometria');
             }

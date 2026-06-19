@@ -71,7 +71,7 @@
         </div>
         <h2>Creado por Isaac Garcia</h2>
         
-        <!-- Selector de parcial -->
+        <!-- Selector de parcial / herramientas -->
         <div class="parcial-selector">
             <button class="parcial-btn active" data-parcial="1">
                 <span class="parcial-icon">📘</span>
@@ -80,6 +80,10 @@
             <button class="parcial-btn" data-parcial="2">
                 <span class="parcial-icon">📗</span>
                 <span class="parcial-text">2do Parcial</span>
+            </button>
+            <button class="parcial-btn" data-parcial="tools">
+                <span class="parcial-icon">⊞</span>
+                <span class="parcial-text">Gauss Jordan</span>
             </button>
         </div>
         
@@ -127,6 +131,15 @@
             </button>
         </div>
         
+        <!-- Selector de herramientas -->
+        <div class="theme-selector" id="themeSelectorTools" style="display: none;">
+            <button id="gaussJordanBtn" class="theme-btn" data-tool="gauss-jordan">
+                <span class="theme-icon">⊞</span>
+                <span class="theme-text">Gauss-Jordan</span>
+            </button>
+        </div>
+        
+        <div id="mainAppView">
         <p class="subtitle" id="instructionText">Conecta cada fórmula con su figura correspondiente</p>
 
         <!-- Selector de modo -->
@@ -237,6 +250,9 @@
             <button class="back-classic-btn" id="backClassicBtn">← Volver al modo Classic</button>
         </div>
     </div>
+    
+    <!-- ═══ VIEW DE HERRAMIENTAS ═══ -->
+    <div id="gaussJordanView" style="display: none;"></div>
     
     <!-- ES Module Principal -->
     <script type="module" src="app.js"></script>
