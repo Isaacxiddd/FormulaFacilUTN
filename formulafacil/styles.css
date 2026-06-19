@@ -2965,66 +2965,38 @@ body.dark-mode .gj-back-btn:hover {
     background: #3a3a4e;
 }
 
-/* ─── THEORY / INTRO COLLAPSIBLE ─── */
-
-.gj-theory {
-    margin-bottom: 16px;
-    border: 2px solid #e1bee7;
-    border-radius: 12px;
-    overflow: hidden;
-}
-
-body.dark-mode .gj-theory {
-    border-color: #4a148c;
-}
-
-.gj-theory-header {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    padding: 10px 14px;
+.gj-theory-btn {
+    margin-left: auto;
     background: #f3e5f5;
+    border: 2px solid #e1bee7;
+    padding: 6px 14px;
+    border-radius: 20px;
     cursor: pointer;
-    user-select: none;
-    transition: background 0.2s;
-}
-
-.gj-theory-header:hover {
-    background: #e1bee7;
-}
-
-body.dark-mode .gj-theory-header {
-    background: #2a2a3e;
-}
-
-body.dark-mode .gj-theory-header:hover {
-    background: #3a3a4e;
-}
-
-.gj-theory-icon {
-    font-size: 1.1em;
-}
-
-.gj-theory-title {
-    flex: 1;
-    font-size: 0.9em;
-    font-weight: 600;
+    font-size: 0.85em;
     color: #6a1b9a;
+    transition: all 0.2s;
+    white-space: nowrap;
 }
 
-body.dark-mode .gj-theory-title {
+.gj-theory-btn:hover {
+    background: #e1bee7;
+    border-color: #ce93d8;
+    transform: scale(1.05);
+}
+
+body.dark-mode .gj-theory-btn {
+    background: #2a1a4e;
+    border-color: #4a148c;
     color: #ce93d8;
 }
 
-.gj-theory-arrow {
-    font-size: 0.75em;
-    color: #ab47bc;
-    transition: transform 0.2s;
+body.dark-mode .gj-theory-btn:hover {
+    background: #3a2a5e;
+    border-color: #6a1b9a;
 }
 
-.gj-theory-body {
-    padding: 16px;
-    display: block;
+.gj-theory-modal-body {
+    padding: 0;
 }
 
 .gj-theory-section {
@@ -3808,6 +3780,11 @@ body.dark-mode .gj-sol-item {
 
     .gj-theory-types {
         flex-direction: column;
+    }
+
+    .gj-theory-btn {
+        font-size: 0.75em;
+        padding: 4px 10px;
     }
 
     .gj-theory-type {
